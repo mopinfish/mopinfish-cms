@@ -84,6 +84,22 @@ BlogPost.propTypes = {
   }),
 }
 
+const Meta = ({ post }) => {
+  const origin = 'https://shibe97.com'
+
+  return (
+    <Helmet
+      title={`${post.frontmatter.title} | Blog`}
+      meta={[
+        { name: 'description', content: post.frontmatter.description },
+        { property: 'og:title', content: post.frontmatter.title },
+        { property: 'og:description', content: post.frontmatter.description },
+        { property: 'og:image', content: `${origin}${post.frontmatter.image}` },
+      ]}
+    />
+  )
+}
+
 export default BlogPost
 
 export const pageQuery = graphql`
