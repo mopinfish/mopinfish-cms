@@ -18,37 +18,37 @@ export default class IndexPage extends React.Component {
             <div className="columns is-desktop is-multiline">
               {posts
                 .map(({ node: post }) => (
-                  <div className="column is-one-third" key={post.id}>
-                    <div className="card">
-                      <div className="card-image">
-                        <figure className="image">
-                          <img src={post.frontmatter.image} alt="post"/>
-                        </figure>
-                      </div>
-                      <div className="card-content">
-                        <div className="media">
-                          <div className="media-content">
-                            <p className="title is-4">
-                              <Link className="has-text-primary" to={post.fields.slug}>
-                                {post.frontmatter.title}
-                              </Link>
-                            </p>
-                            <p className="subtitle is-6">Author: {post.frontmatter.author}</p>
-                          </div>
+                  <Link className="has-text-primary" to={post.fields.slug}>
+                    <div className="column is-one-third" key={post.id}>
+                      <div className="card">
+                        <div className="card-image">
+                          <figure className="image">
+                            <img src={'/img/' + post.frontmatter.image.relativePath} alt={post.frontmatter.image.relativePath}/>
+                          </figure>
                         </div>
+                        <div className="card-content">
+                          <div className="media">
+                            <div className="media-content">
+                              <p className="title is-4">
+                                  {post.frontmatter.title}
+                              </p>
+                              <p className="subtitle is-6">Author: {post.frontmatter.author}</p>
+                            </div>
+                          </div>
  
-                        <div className="content">
-                          {post.excerpt}
-                          <br/>
-                          <Link className="button is-small" to={post.fields.slug}>
-                            Keep Reading
-                          </Link>
-                          <br/>
-                          <time>{post.frontmatter.date}</time>
+                          <div className="content">
+                            {post.excerpt}
+                            <br/>
+                            <Link className="button is-small" to={post.fields.slug}>
+                              Keep Reading
+                            </Link>
+                            <br/>
+                            <time>{post.frontmatter.date}</time>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
  
                 ))}
             </div>
@@ -82,10 +82,12 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
-            image
             author
             templateKey
             date(formatString: "MMMM DD, YYYY")
+            image {
+              relativePath
+            }
           }
         }
       }

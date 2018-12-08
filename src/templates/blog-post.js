@@ -27,7 +27,8 @@ export const BlogPostTemplate = ({
               {title}
             </h1>
             <p>{description}</p>
-            <img src={image} alt="ogp" />
+            hogehoge
+            <img src={'/img/' + image.relativePath} alt={image.relativePath}/>
             <PostContent content={content} />
             {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
@@ -75,7 +76,7 @@ const BlogPost = ({ data }) => {
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
-        images={post.frontmatter.images}
+        image={post.frontmatter.image}
       />
     </Layout>
   )
@@ -97,7 +98,7 @@ const Meta = ({ post }) => {
         { name: 'description', content: post.frontmatter.description },
         { property: 'og:title', content: post.frontmatter.title },
         { property: 'og:description', content: post.frontmatter.description },
-        { property: 'og:image', content: `${origin}${post.frontmatter.image}` },
+        { property: 'og:image', content: `${origin}${post.frontmatter.image.relativePath}` },
       ]}
     />
   )
@@ -115,7 +116,9 @@ export const pageQuery = graphql`
         title
         description
         tags
-        image
+        image {
+          relativePath
+        }
       }
     }
   }
