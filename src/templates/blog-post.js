@@ -27,7 +27,6 @@ export const BlogPostTemplate = ({
               {title}
             </h1>
             <p>{description}</p>
-            hogehoge
             <img src={'/img/' + image.relativePath} alt={image.relativePath}/>
             <PostContent content={content} />
             {tags && tags.length ? (
