@@ -18,8 +18,8 @@ export default class IndexPage extends React.Component {
             <div className="columns is-desktop is-multiline">
               {posts
                 .map(({ node: post }) => (
-                  <Link className="has-text-primary" to={post.fields.slug}>
-                    <div className="column is-one-third" key={post.id}>
+                  <div className="column is-one-third" key={post.id}>
+                    <Link className="has-text-primary" to={post.fields.slug}>
                       <div className="card">
                         <div className="card-image">
                           <figure className="image">
@@ -47,8 +47,8 @@ export default class IndexPage extends React.Component {
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
  
                 ))}
             </div>
