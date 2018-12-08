@@ -13,6 +13,7 @@ export const BlogPostTemplate = ({
   tags,
   title,
   helmet,
+  image
 }) => {
   const PostContent = contentComponent || Content
 
@@ -26,6 +27,7 @@ export const BlogPostTemplate = ({
               {title}
             </h1>
             <p>{description}</p>
+            <img src={image} alt="ogp" />
             <PostContent content={content} />
             {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
@@ -73,6 +75,7 @@ const BlogPost = ({ data }) => {
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+        images={post.frontmatter.images}
       />
     </Layout>
   )
@@ -112,6 +115,7 @@ export const pageQuery = graphql`
         title
         description
         tags
+        image
       }
     }
   }
