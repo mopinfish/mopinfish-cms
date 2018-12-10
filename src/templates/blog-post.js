@@ -83,15 +83,17 @@ BlogPost.propTypes = {
   }),
 }
 
+const host = 'https://mopinfish.netlify.com'
 const Meta = ({ post }) => {
   return (
     <Helmet
       title={`${post.frontmatter.title} | Blog`}
       meta={[
         { name: 'description', content: post.frontmatter.description },
-        { property: 'og:title', content: post.frontmatter.description },
+        { property: 'og:title', content: post.frontmatter.title },
         { property: 'og:description', content: post.frontmatter.description },
-        { property: 'og:image', content: '/img/' + post.frontmatter.image.relativePath }
+        { property: 'og:image', content: host + '/img/' + post.frontmatter.image.relativePath },
+        { property: 'og:url', content: host + post.fields.slug }
       ]}
     />
   )
@@ -104,6 +106,9 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
+      fields {
+        slug
+      }
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title

@@ -33,8 +33,8 @@ const TemplateWrapper = ({ children }) => (
 
 	        <meta property="og:type" content="business.business" />
           <meta property="og:title" content={data.site.siteMetadata.title} />
-          <meta property="og:url" content="/" />
-          <meta property="og:image" content="/img/top_ogp.jpg" />
+          <meta property="og:url" content="https://mopinfish.netlify.com" />
+          <meta property="og:image" content="https://mopinfish.netlify.com/img/top_ogp.jpg" />
         </Helmet>
         <Navbar />
         <div>{children}</div>
